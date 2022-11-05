@@ -9,30 +9,30 @@ import javax.persistence.Table;
 @Table(name = "producto")
 public class product {
     @Id
-    private  int codigoProuducto;
-    @Column(nullable = false, length = 50)
+    private  int codigoProducto;
+    @Column(name="producto",nullable = false, length = 50)
     private String producto ;
-    @Column(nullable = false)
+    @Column(name="precio",nullable = false)
     private Double precio;
-    @Column(nullable = false)
+    @Column(name="cantidad",nullable = false)
     private  int cantidad ;
 
     public product() {
     }
 
-    public product(int codigoProuducto, String producto, Double precio, int cantidad) {
-        this.codigoProuducto = codigoProuducto;
+    public product(int codigoProducto, String producto, Double precio, int cantidad) {
+        this.codigoProducto = codigoProducto;
         this.producto = producto;
         this.precio = precio;
         this.cantidad = cantidad;
     }
 
-    public int getCodigoProuducto() {
-        return codigoProuducto;
+    public int getCodigoProducto() {
+        return codigoProducto;
     }
 
-    public void setCodigoProuducto(int codigoProuducto) {
-        this.codigoProuducto = codigoProuducto;
+    public void setCodigoProducto(int codigoProducto) {
+        this.codigoProducto = codigoProducto;
     }
 
     public String getProducto() {
@@ -57,5 +57,15 @@ public class product {
 
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
+    }
+
+    @Override
+    public String toString() {
+        return "product{" +
+                "codigoProducto=" + codigoProducto +
+                ", producto='" + producto + '\'' +
+                ", precio=" + precio +
+                ", cantidad=" + cantidad +
+                '}';
     }
 }
