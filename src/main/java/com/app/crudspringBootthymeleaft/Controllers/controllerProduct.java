@@ -4,19 +4,19 @@ import com.app.crudspringBootthymeleaft.Services.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Map;
 
-@RequestMapping("/producto")
-@RestController
+@Controller
 public class controllerProduct {
     @Autowired
     private serviceImpProduct serprod;
-    @GetMapping
-    public List<product> getAllProduct(){
-        return serprod.getAllProducts();
+    @GetMapping("/producto")
+    public String getAllProduct(Model modelo){
+        modelo.addAttribute("productos",serprod.getAllProducts());
+        return "producto";
     }
 
 @GetMapping("/{codigoProducto}")
@@ -39,6 +39,8 @@ public product getbyid(@PathVariable("codigoProducto")Integer codigoProducto){
     public  void deleteProdcut(@PathVariable("codigoProducto")Integer codigoProducto){
         serprod.deleteProduct(codigoProducto);
 }
+
+
 }
 
 
